@@ -1,2 +1,8 @@
 fake website | example@email.com | 1234
 other example fake website | email@@@@email.com | abcd
+aaa | example@email.com | bbb 
+AMAAYZON | example@email.com | abc 
+aaaabbbb | example@email.com | cccc 
+matchbox | example@email.com | 1111 
+one2three | example@email.com | 1234 
+websiteAA | example@email.com | 1111 
