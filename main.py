@@ -41,15 +41,19 @@ def save_data():
         is_ok = messagebox.askokcancel(title='website name', message=f'These are the details entered: \nWebsite: {web} \nEmail: {email_user} \n'
                                                     f'Password: {pword} \n Is it ok to save?')
         if is_ok:
-            with open('data.json', mode='r') as file:
-                data = json.load(file) #Reading old data
-                data.update(new_data) #Updating old data with new data
-
-            with open('data.json', 'w') as file:
-                json.dump(data, file, indent=4) #Saving updated data
-                
-                website_entry.delete(0, END)
-                password_entry.delete(0, END)
+            try:
+                with open('data.json', mode='r') as file:
+                    data = json.load(file) #Reading old data
+                    data.update(new_data) #Updating old data with new data
+            except FileNotFoundError:
+                with open('data.json', 'w') as file:
+                    json.dump(new_data, file, indent=4)
+            else:
+                with open('data.json', 'w') as file:
+                    json.dump(data, file, indent=4) #Saving updated data
+            finally:
+                    website_entry.delete(0, END)
+                    password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
