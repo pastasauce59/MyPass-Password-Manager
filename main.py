@@ -44,11 +44,12 @@ def save_data():
             try:
                 with open('data.json', mode='r') as file:
                     data = json.load(file) #Reading old data
-                    data.update(new_data) #Updating old data with new data
             except FileNotFoundError:
                 with open('data.json', 'w') as file:
                     json.dump(new_data, file, indent=4)
             else:
+                data.update(new_data) #Updating old data with new data
+                
                 with open('data.json', 'w') as file:
                     json.dump(data, file, indent=4) #Saving updated data
             finally:
